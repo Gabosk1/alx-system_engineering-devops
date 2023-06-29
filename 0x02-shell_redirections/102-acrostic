@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c 1 < input.txt | paste -s -d ''
+awk -F $'\t' '{count[$2]++} END {for (host in count) print count[host], host}' | sort -nr | head -n 11
