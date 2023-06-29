@@ -1,2 +1,12 @@
 #!/bin/bash
 awk '{printf "%s", substr($0, 1, 1)}' | tr -d '\n'
+
+file="$1"
+decoded=""
+
+cut -c 1 "$file" > temp
+paste -s -d '' temp > output
+decoded=$(<output)
+rm temp output
+
+printf "%s" "$decoded"
